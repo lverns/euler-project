@@ -7,6 +7,8 @@
 ;;
 ;;    Find the largest palindrome made from the product of two 3-digit numbers.
 ;;
+;; "3-digit number" is not defined explicitly here, so I'll assume that it means
+;; any integer in the range [100,999].
 
 (defn palindrome? [s]
   (= s (apply str (reverse s))))
