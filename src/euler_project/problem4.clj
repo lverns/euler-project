@@ -13,20 +13,9 @@
 (defn palindrome? [s]
   (= s (apply str (reverse s))))
 
-
-(defn reverse-range
-  "Produces a lazy list containing all the integers from high to low (both inclusive),
-   when high is greater than or equal to low."
-  [high low]
-  (cond
-    (< high low) '()
-    (= high low) (list low)
-    :else (lazy-seq (cons high
-                             (reverse-range (dec high) low)))))
-
 (def all-palindromes
-  (for [x (reverse-range 999 100)
-        y (reverse-range 999 100)
+  (for [x (range 100 999)
+        y (range 100 999)
         :when (palindrome? (str (* x y)))]
     (* x y)))
 
