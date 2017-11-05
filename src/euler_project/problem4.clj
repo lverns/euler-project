@@ -24,12 +24,11 @@
     :else (lazy-seq (cons high
                              (reverse-range (dec high) low)))))
 
-(def result
+(def all-palindromes
   (for [x (reverse-range 999 100)
         y (reverse-range 999 100)
         :when (palindrome? (str (* x y)))]
     (* x y)))
 
-(def solution (apply max result))
-solution
-;; => 906609
+(defn -main [& args]
+  (println (apply max all-palindromes)))
