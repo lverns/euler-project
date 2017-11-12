@@ -17,7 +17,13 @@
   (for [x (range 100 1000)
         y (range x 1000)
         :when (palindrome? (str (* x y)))]
-    (* x y)))
+    {:factor-1 x
+     :factor-2 y
+     :product (* x y)}))
 
 (defn -main [& args]
-  (println (apply max all-palindromes)))
+  (let [largest-palindrome (apply max-key :product all-palindromes)]
+    (println
+     (str "The largest palindrome formed by the multiplication of two 3-digit "
+          "numbers is " (:product largest-palindrome) " and is the product of "
+          (:factor-1 largest-palindrome) " and " (:factor-2 largest-palindrome) "."))))
