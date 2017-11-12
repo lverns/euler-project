@@ -14,8 +14,8 @@
   (= s (apply str (reverse s))))
 
 (def all-palindromes
-  (for [x (range 100 999)
-        y (range 100 999)
+  (for [x (range 100 1000)
+        y (range x 1000)
         :when (palindrome? (str (* x y)))]
     (* x y)))
 
