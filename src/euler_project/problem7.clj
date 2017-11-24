@@ -6,7 +6,26 @@
 ;;
 ;;    What is the 10,001st prime number?
 
+(defn any-divide?
+  "Returns logical true if any of the elements of `factors` divides `product`"
+  [factors product]
+  (some #(zero? (mod product %)) factors))
+
+(defn primes
+  "Returns a vector of the first `n` primes in ascending order."
+  [n]
+  (some
+   (fn [primes] (if (= n (count primes)) primes))
+   (reductions (fn [primes x]
+                 (if-not (any-divide? primes x)
+                   (conj primes x)
+                   primes))
+               [2]
+               (drop 3 (range)))))
+
+(defn get-result [] (last (primes 10001)))
+
 (defn -main
   "Runs and prints the solution to problem 7"
   [& args]
-  (println "Problem 7 not implemented."))
+  (println (str "The 10,001th prime number is " (get-result) ".")))
