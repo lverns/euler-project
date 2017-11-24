@@ -10,7 +10,9 @@
 ;; "3-digit number" is not defined explicitly here, so I'll assume that it means
 ;; any integer in the range [100,999].
 
-(defn palindrome? [s]
+(defn palindrome?
+  "Returns true iff passed a string that is a palindrome."
+  [s]
   (= s (apply str (reverse s))))
 
 (def all-palindromes
@@ -21,7 +23,9 @@
      :factor-2 y
      :product (* x y)}))
 
-(defn -main [& args]
+(defn -main
+  "Finds the solution to problem 4 and prints to stdout."
+  [& args]
   (let [largest-palindrome (apply max-key :product all-palindromes)]
     (println
      (str "The largest palindrome formed by the multiplication of two 3-digit "
