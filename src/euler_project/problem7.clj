@@ -20,19 +20,23 @@
             nil
             factors)))
 
-(defn primes
-  "Returns a vector of the first `n` primes in ascending order."
-  [n]
-  (some
-   (fn [primes] (if (= n (count primes)) primes))
-   (reductions (fn [primes x]
-                 (if-not (any-divide? primes x)
-                   (conj primes x)
-                   primes))
-               [2]
-               (drop 3 (range)))))
+(defn- lazy-primes-helper
+  "When given a strictly increasing list of all primes less
+   than `product`, returns a stictly increasing lazy seq
+   containing all primes greater than or equal to `product`."
+  [primes product]
+  (if (any-divide? primes product)
+    (recur primes (inc product))
+    (lazy-seq (cons product
+                    (lazy-primes-helper (conj primes product) (inc product))))))
 
-(defn get-result [] (last (primes 10001)))
+(defn lazy-primes
+  "Returns a strictly increasing lazy sequence containing all primes."
+  []
+  (lazy-primes-helper [] 2))
+
+(defn get-result [] (nth (lazy-primes) 10000))
+
 
 (defn -main
   "Runs and prints the solution to problem 7"
