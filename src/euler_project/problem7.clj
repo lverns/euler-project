@@ -1,4 +1,5 @@
-(ns euler-project.problem7)
+(ns euler-project.problem7
+  (:require [clojure.math.numeric-tower :as math]))
 
 ;; https://projecteuler.net/problem=7
 ;;
@@ -7,9 +8,17 @@
 ;;    What is the 10,001st prime number?
 
 (defn any-divide?
-  "Returns logical true if any of the elements of `factors` divides `product`"
+  "Given a list of factors in increasing order, returns logical
+   true if any of the elements in `factors` divides `product`"
   [factors product]
-  (some #(zero? (mod product %)) factors))
+  (let [sqrt (math/sqrt product)]
+    (reduce (fn [_ x]
+              (cond
+                (< sqrt x) (reduced false)
+                (zero? (mod product x)) (reduced true)
+                :else nil))
+            nil
+            factors)))
 
 (defn primes
   "Returns a vector of the first `n` primes in ascending order."
