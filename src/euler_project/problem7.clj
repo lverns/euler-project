@@ -7,7 +7,7 @@
 ;;
 ;;    What is the 10,001st prime number?
 
-(defn any-divide?
+(defn not-prime?
   "When given a strictly increasing list of all primes less than `product`,
    returns logical true if any of the elements in `factors` divides `product`"
   [factors product]
@@ -25,7 +25,7 @@
    than `product`, returns a stictly increasing lazy seq
    containing all primes greater than or equal to `product`."
   [primes product]
-  (if (any-divide? primes product)
+  (if (not-prime? primes product)
     (recur primes (inc product))
     (lazy-seq (cons product
                     (lazy-primes-helper (conj primes product) (inc product))))))
