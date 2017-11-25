@@ -2,8 +2,8 @@
 
 ;; https://projecteuler.net/problem=4
 ;;
-;;    A palindromic number reads the same both ways. The largest palindrome made from
-;;    the product of two 2-digit numbers is 9009 = 91 × 99.
+;;    A palindromic number reads the same both ways. The largest palindrome made
+;;    from the product of two 2-digit numbers is 9009 = 91 × 99.
 ;;
 ;;    Find the largest palindrome made from the product of two 3-digit numbers.
 ;;
@@ -35,4 +35,5 @@
     (println
      (str "The largest palindrome formed by the multiplication of two 3-digit "
           "numbers is " (:product largest-palindrome) " and is the product of "
-          (:factor-1 largest-palindrome) " and " (:factor-2 largest-palindrome) "."))))
+          (:factor-1 largest-palindrome) " and " (:factor-2 largest-palindrome)
+          "."))))

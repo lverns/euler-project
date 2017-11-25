@@ -2,7 +2,8 @@
 
 ;; https://projecteuler.net/problem=8
 ;;
-;;    The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
+;;    The four adjacent digits in the 1000-digit number that have the greatest
+;;    product are 9 × 9 × 8 × 9 = 5832.
 ;;
 ;;    73167176531330624919225119674426574742355349194934
 ;;    96983520312774506326239578318016984801869478851843
@@ -25,7 +26,8 @@
 ;;    05886116467109405077541002256983155200055935729725
 ;;    71636269561882670428252483600823257530420752963450
 ;;
-;;    Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
+;;    Find the thirteen adjacent digits in the 1000-digit number that have the
+;;    greatest product. What is the value of this product?
 
 (def thousand-digit-string
   (str
@@ -59,8 +61,8 @@
   (map char-to-int thousand-digit-string))
 
 (defn products
-  "When `numbers` is a list of numbers, returns a list of maps
-   describing the result of multipling runs with `length`"
+  "When `numbers` is a list of numbers, returns a list of maps describing the
+   result of multipling runs with `length`"
   [numbers length]
   (map (fn [factors] {:factors factors
                       :product (apply * factors)})
@@ -72,8 +74,9 @@
   "Generates a human-readable report, when passed the solution of problem 8."
   [report-map]
   (str "The thirteen adjacent digits in the 1000-digit number that "
-        "have the greatest product are " (clojure.string/join "×" (:factors report-map))
-        "=" (:product report-map) "."))
+       "have the greatest product are "
+       (clojure.string/join "×" (:factors report-map))
+       "=" (:product report-map) "."))
 
 (defn -main
   "Finds the solution to problem 8 and prints to stdout."
