@@ -43,7 +43,7 @@
 (def products (map (fn [factors] {:factors factors
                                   :product (apply * factors)}) runs-of-13-digits))
 
-(def result (apply max-key :product products))
+(defn result [] (apply max-key :product products))
 
 (defn generate-report-string
   "Generates a human-readable report, when passed the solution of problem 8."
@@ -55,5 +55,5 @@
 (defn -main
   "Finds the solution to problem 8 and prints to stdout."
   [& args]
-  (println (generate-report-string result)))
+  (println (generate-report-string (result))))
 
