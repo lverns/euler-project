@@ -23,10 +23,15 @@
      :factor-2 y
      :product (* x y)}))
 
+(defn result
+  "Returns a map describing the solution to problem 4"
+  []
+  (apply max-key :product all-palindromes))
+
 (defn -main
   "Finds the solution to problem 4 and prints to stdout."
   [& args]
-  (let [largest-palindrome (apply max-key :product all-palindromes)]
+  (let [largest-palindrome (result)]
     (println
      (str "The largest palindrome formed by the multiplication of two 3-digit "
           "numbers is " (:product largest-palindrome) " and is the product of "
