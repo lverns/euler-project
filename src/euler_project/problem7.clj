@@ -8,8 +8,8 @@
 ;;    What is the 10,001st prime number?
 
 (defn any-divide?
-  "Given a list of factors in increasing order, returns logical
-   true if any of the elements in `factors` divides `product`"
+  "When given a strictly increasing list of all primes less than `product`,
+   returns logical true if any of the elements in `factors` divides `product`"
   [factors product]
   (let [sqrt (math/sqrt product)]
     (reduce (fn [_ x]
