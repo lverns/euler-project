@@ -58,12 +58,15 @@
 (def thousand-digit-list
   (map char-to-int thousand-digit-string))
 
-(def runs-of-13-digits (partition 13 1 thousand-digit-list))
+(defn products
+  "When `numbers` is a list of numbers, returns a list of maps
+   describing the result of multipling runs with `length`"
+  [numbers length]
+  (map (fn [factors] {:factors factors
+                      :product (apply * factors)})
+       (partition length 1 numbers)))
 
-(def products (map (fn [factors] {:factors factors
-                                  :product (apply * factors)}) runs-of-13-digits))
-
-(defn result [] (apply max-key :product products))
+(defn result [] (apply max-key :product (products thousand-digit-list 13)))
 
 (defn generate-report-string
   "Generates a human-readable report, when passed the solution of problem 8."
