@@ -17,7 +17,7 @@
   (is (not (problem4/palindrome? "lavrne"))))
 
 
-;; Tests for result
+;; Tests for `result`
 
 (deftest computes-correct-result
   (let [palindrome (problem4/result)]
