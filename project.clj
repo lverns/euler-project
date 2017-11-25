@@ -4,7 +4,9 @@
                  [org.clojure/math.numeric-tower "0.0.4"]]
   :profiles {:problem4 {:main euler-project.problem4}
              :problem7 {:main euler-project.problem7}
-             :problem8 {:main euler-project.problem8}}
+             :problem8 {:main euler-project.problem8}
+             :problem10 {:main euler-project.problem10}}
   :aliases {"problem4" ["with-profile" "problem4" "run"]
             "problem7" ["with-profile" "problem7" "run"]
-            "problem8" ["with-profile" "problem8" "run"]})
+            "problem8" ["with-profile" "problem8" "run"]
+            "problem10" ["with-profile" "problem10" "run"]})
