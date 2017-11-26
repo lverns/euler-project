@@ -36,6 +36,12 @@
   []
   (lazy-primes-helper [] 2))
 
+
+;; This solution uses trial division to produce new primes. While the Sieve of
+;; Eratosthenes has a better time complexity, my attempt to implement it
+;; was a little _slower_ than trial division (for this particular problem, on my
+;; particular machine).
+
 (defn get-result [] (nth (lazy-primes) 10000))
 
 
